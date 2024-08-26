@@ -78,6 +78,14 @@ app.post("/sign-up", async (req, res, next) => {
   app.get("/", (req, res) => {
     res.render("index", { user: req.user });
   });
-    
+  app.get("/log-out", (req, res, next) => {
+    req.logout((err) => {
+      if (err) {
+        return next(err);
+      }
+      res.redirect("/");
+    });
+  });
+  
 
 app.listen(3000, () => console.log("app listening on port 3000!"));
